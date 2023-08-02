@@ -1,16 +1,17 @@
 <html>
     <head>
         <title><%=title%></title>
-        <link rel="stylesheet" href="/css/layout.css">
+        <link rel="stylesheet" type="text/css" href="/css/layout.css">
+        <%-style%>
     </head>
     <body>
-        <h4>were</h4>
+        
        <%- include('_header');-%>
 
        <!--body is pre defined and we are using it-->
-       <%-body-%>
+       <%-body %>
 
         <%- include('_footer');-%>
-
+        <%-script%>
     </body>
 </html>
