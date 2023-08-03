@@ -1,5 +1,18 @@
-body{
-    margin: 0;
-    color: aqua;
-    text-align: center;
+#sign-up-page{
+    width: 40vw;
+    height: auto;
+    margin-top: 5%;
+    margin-left: 20%;
+}
+
+#sign-up-btn{
+    height: 40px;
+    width: 70px;
+}
+
+#login-page{
+    width: 40vw;
+    height: auto;
+    margin-top: 5%;
+    margin-left: 20%;
 }

@@ -6,6 +6,8 @@ const expressLayouts=require('express-ejs-layouts');
 //Use before routes.
 app.use(expressLayouts);
 
+
+
 //extract style and scripts from sub pages into the layout.
 app.set('layout extractStyles', true);
 app.set('layout extractScripts', true);
@@ -14,8 +16,8 @@ app.use(express.static('./assests'));
 
 
 const db=require('./config/mongoose');
-//use express router(('/' means any request)Any request that comes goes to routes)
 
+//use express router(('/' means any request)Any request that comes goes to routes)
 app.use('/',require('./routes/index'));
 
 //Setting up view engine

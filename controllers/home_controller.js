@@ -3,3 +3,9 @@ module.exports.home=function(req,res){
         title:'AllSocial'
     })
 };
+
+module.exports.loginPage=function(req,res){
+    return res.render('login',{
+        title:'AllSocial'
+    })
+};
