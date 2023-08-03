@@ -10,14 +10,11 @@ const userSchema=new mongoose.Schema({
         type:String,
         required:true,
     },
-    firstName:{
-        type:String,
-        required:true
-    },
-    lastName:{
+    name:{
         type:String,
         required:true
     }
+    
 },{
     //It will tell(updated at and created at) every time some action is perform.
     timestamps:true
