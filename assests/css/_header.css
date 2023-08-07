@@ -1,0 +1,13 @@
+.container-fliud{
+    display: flex;
+    flex-direction: row;
+}
+ul{
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+
+}
+.nav-list{
+    padding-right: 15px;
+}

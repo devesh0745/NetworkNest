@@ -1,18 +1,27 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<link rel="stylesheet" href="/css/_header.css">
 <header>
-    header
-    <ul>
-        <%if (locals.user) {%>
-            <li><%=user.name%></li>
-            <li>
-                <a href="/users/sign-out">sign out</a>
-            </li>
-        <%}else{%>
-            <li>
-                <a href="/users/sign-in">sign-in</a>
-            </li>
-            <li>
-                <a href="/users/sign-up">sign-up</a>
-            </li>
-        <%}%>    
-        </ul>
+    <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid" class="fa-regular fa-user">
+            <i class="fa-regular fa-user">  AllSocial</i>
+
+            <ul>
+                <%if (locals.user) {%>
+                    <li class="nav-list"><%=user.name%></li>
+                    <li>
+                        <a href="/users/sign-out">sign out</a>
+                    </li>
+                <%}else{%>
+                    <li class="nav-list">
+                        <a href="/users/sign-in">sign-in</a>
+                    </li>
+                    <li>
+                        <a href="/users/sign-up">sign-up</a>
+                    </li>
+                <%}%>    
+                </ul>
+            </div>
+        
+      </nav>      
+    
 </header>
