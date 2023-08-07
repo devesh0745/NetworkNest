@@ -58,6 +58,8 @@ module.exports.profile=function(req,res){
     })
 }
 
+
+
 //to log out
 module.exports.destroySession=function(req, res, next) {
     req.logout(function(err) {

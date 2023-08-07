@@ -1,1 +1,23 @@
-<h1>Welcome</h1>
+<h1>AllSocial</h1>
+
+<section>
+    <form action="/posts/create" id="new-post-form" method="post">
+        <h4>POST</h4>
+        <textarea name="content"  cols="30" rows="4" placeholder="type here..."></textarea>
+        <input type="submit" value="submit">
+    </form>
+
+    <div id="post-list">
+        <h3>All Post</h3>
+        <ul>
+            <%for (i of postList) {%>
+                <li>
+                    <%=i.content%>
+                    <%=i.user.name%>
+                </li>
+            <%}%>
+        </ul>
+    
+    </div>
+</section>
+

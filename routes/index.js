@@ -13,11 +13,11 @@ console.log("Router loaded");
 
 router.get('/',homeController.home);
 
-/*router.get('/login',homeController.loginPage);
-router.use('/sign-up',require('./signUp'));
-router.use('/login-up',require('./login'));*/
-
 router.use('/users',require('./users'));
+
+router.use('/posts',require('./posts'));
+
+
 
 
 //So this router can be access to main index file.
