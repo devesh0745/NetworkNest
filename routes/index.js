@@ -17,7 +17,7 @@ router.use('/users',require('./users'));
 
 router.use('/posts',require('./posts'));
 
-
+router.use('/comments',require('./comments'));
 
 
 //So this router can be access to main index file.

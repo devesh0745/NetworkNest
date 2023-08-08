@@ -6,7 +6,15 @@ module.exports.home= async function(req,res){
         //    console.log(req.cookies)
         //    res.cookie('user_id',65);
         //populate the user of each post
-        const postList=await Post.find({}).populate('user').exec();
+        const postList=await Post.find({})
+                                 .populate('user')
+                                 .populate({
+                                    path:'comments',
+                                    populate:{
+                                        path:'user'
+                                    }
+                                 })
+                                 .exec();
         
         return res.render('home',{
             title:'AllSocial',
