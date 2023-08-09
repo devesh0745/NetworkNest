@@ -25,6 +25,7 @@
                         <%if(locals.user) {%>
                             <form action="/comments/create" method="post">
                                 <input type="text" name="content" id="" placeholder="Add Comment" required>
+                                <!--value will pass the post id which will be used in action when form is submitted-->
                                 <input type="hidden" name="post" value="<%= post._id %>">
                                 <input type="submit" name="" id="">
                             </form>
@@ -33,6 +34,11 @@
                             <ul id="post-comment-<%=post._id%>">
                                 <%for(comment of post.comments) {%>
                                     <p>
+                                        <% if(locals.user && locals.user.id==comment.user.id) {%>
+                                            <small>
+                                                <a href="/comments/destroy/<%=comment._id%>">del</a>
+                                            </small>
+                                        <%}%>
                                         <%=comment.content%>
                                         <br>
                                         <small>

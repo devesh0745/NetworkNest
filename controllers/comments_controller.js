@@ -32,3 +32,31 @@ module.exports.create=async function(req,res){
         res.redirect('/');
     }
 }
+
+module.exports.destroy=async function(req,res){
+    try{
+        const comment = await Comment.findById(req.params.id);
+        if(comment.user.toString()==req.user.id){
+             
+            let postId=comment.post;
+
+            comment.deleteOne();
+
+            try{
+                //It will pull the comment id from the comments array in post.
+                const post=Post.findByIdAndUpdate(postId,{$pull:{comments:req.params.id}})
+                return res.redirect('back');
+            }
+            catch(err){
+                console.log('Error in deleting comment from comments array!')
+                return res.redirect('back');
+            }
+        }else{
+            return res.redirect('back');
+        }
+    }
+    catch(err){
+        console.log('Error in deleting the comment ');
+        return res.redirect('back');
+    }
+}
