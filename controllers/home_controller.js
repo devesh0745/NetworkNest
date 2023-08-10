@@ -1,4 +1,5 @@
 const Post=require('../models/post');
+const User=require('../models/user');
 
 module.exports.home= async function(req,res){
     try{
@@ -14,10 +15,12 @@ module.exports.home= async function(req,res){
                                     }
                                  })
                                  .exec();
-        
+        //To get all the users
+        const users=await User.find({});
         return res.render('home',{
             title:'AllSocial',
-            postList:postList
+            postList:postList,
+            all_users:users
         });
     }
     catch(err){

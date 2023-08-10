@@ -52,10 +52,17 @@ module.exports.createSession=function(req,res){
     return res.redirect('/');
 }
 
-module.exports.profile=function(req,res){
-    return res.render('user_profile',{
-        title:'AllSocial'
-    })
+module.exports.profile=async function(req,res){
+    try{
+        const user=await User.findById(req.params.id);
+        return res.render('user_profile',{
+            title:'AllSocial',
+            profile_user:user
+        })
+    }
+    catch(err){
+        console.log('Error in displaying user profile!');
+    }
 }
 
 
