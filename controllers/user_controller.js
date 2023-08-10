@@ -65,7 +65,21 @@ module.exports.profile=async function(req,res){
     }
 }
 
-
+//To update a user.
+module.exports.update=async function(req,res){
+    try{
+        if(req.user.id==req.params.id){
+        const user=await User.findByIdAndUpdate(req.params.id,{name:req.body.name,email:req.body.email})
+            return res.redirect('back')
+        }else{
+            return res.status(401).send('Unauthorized');
+        }
+    }
+    catch(err){
+        console.log("User can not be updated");
+        return res.redirect('back');
+    }
+}
 
 //to log out
 module.exports.destroySession=function(req, res, next) {
