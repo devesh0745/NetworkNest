@@ -8,8 +8,17 @@ module.exports.create=async function(req,res){
             user:req.user._id
         });
         
+        //to check if request is ajax or not(type of ajax request is ajax)
+        if(req.xhr){
+            return res.status(200).json({
+                data:{
+                post:post
+                },
+                message:"Post created"
+            })
+        }
+
         req.flash('success','Post Created');
-        
         return res.redirect('back');
     }
     catch(err){

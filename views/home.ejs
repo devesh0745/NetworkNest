@@ -9,7 +9,7 @@
     </form>
     <%}%>
 
-    <div id="post-list">
+    <div id="post-list-container">
         <h3>All Post</h3>
         <ul>
             <%for (post of postList) {%>
@@ -27,3 +27,4 @@
         <a href="/users/profile/<%= u.id %>"><%= u.name%></a>
     <%}%>
 </section>
+<script src="/js/home_posts.js"></script>
