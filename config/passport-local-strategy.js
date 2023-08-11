@@ -6,24 +6,26 @@ const User=require('../models/user');
 
 //authenticaion using passport and tell passport to use local strategy.
 passport.use(new LocalStrategy({
-    usernameField:'email'
+    usernameField:'email',
+    //To use req.flash
+    passReqToCallback:true
 },
     //email and password are automatically passed.       
                        //done is callback function which report back to passport.
-    async function(email,password,done){
+    async function(req,email,password,done){
         try{
             const user=await User.findOne({email : email});
 
             console.log(user.password);
             if(!user || user.password!= password){
-                console.log('Invalid username or password');
+                req.flash('error','Invalid username or password');
                 return done(null,false);
             }
             //found the user
             return done(null,user);
         }
         catch(err){
-            console.log('Error in finding user --> Passport');
+            req.flash('error',err);
             return done(err);
             }
     }

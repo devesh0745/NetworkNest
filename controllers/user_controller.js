@@ -31,24 +31,29 @@ module.exports.create=async function(req,res){
             if(!user){
             try{
                 const user=await User.create(req.body);
+                req.flash('success','Sign-up Successfuly');
                 return res.redirect('/users/sign-in');
                 }
             catch(err){
-                console.log('error in creating user while signing up!');
+                req.flash('error','Sign-up again');
+                return res.redirect('back');
                 }
             }
         else{
+            req.flash('error','Sign-up first');
             return res.redirect('back');
             }
     }
     catch(err){
-            if(err){console.log('error in finding user in signing up'); return}
+            req.flash('error','Sign-up Again');
+            return res.redirect('back');
         }
     }
 
 
 //sign in and create session for the user.
 module.exports.createSession=function(req,res){
+    req.flash('success','Logged in Successfuly!');
     return res.redirect('/');
 }
 
@@ -61,7 +66,8 @@ module.exports.profile=async function(req,res){
         })
     }
     catch(err){
-        console.log('Error in displaying user profile!');
+        req.flash('error',err);
+        return res.redirect('back');
     }
 }
 
@@ -69,14 +75,15 @@ module.exports.profile=async function(req,res){
 module.exports.update=async function(req,res){
     try{
         if(req.user.id==req.params.id){
-        const user=await User.findByIdAndUpdate(req.params.id,{name:req.body.name,email:req.body.email})
+            const user=await User.findByIdAndUpdate(req.params.id,{name:req.body.name,email:req.body.email})
+            req.flash('success','Updated Successfuly');
             return res.redirect('back')
         }else{
             return res.status(401).send('Unauthorized');
         }
     }
     catch(err){
-        console.log("User can not be updated");
+        req.flash('error',err);
         return res.redirect('back');
     }
 }
@@ -85,6 +92,7 @@ module.exports.update=async function(req,res){
 module.exports.destroySession=function(req, res, next) {
     req.logout(function(err) {
       if (err) { return next(err); }
+      req.flash('success','Logged out Successfuly')
       return res.redirect('/');
     });
   };

@@ -7,14 +7,13 @@ module.exports.home= async function(req,res){
         //    res.cookie('user_id',65);
         //populate the user of each post
         const postList=await Post.find({})
-                                 .populate('user')
-                                 .populate({
-                                    path:'comments',
-                                    populate:{
-                                        path:'user'
-                                    }
-                                 })
-                                 .exec();
+                        .populate('user')
+                        .populate({
+                        path:'comments',
+                        populate:{
+                        path:'user'
+                        }
+                             }).exec();
         //To get all the users
         const users=await User.find({});
         return res.render('home',{
@@ -25,6 +24,7 @@ module.exports.home= async function(req,res){
     }
     catch(err){
         console.log("Error in displaying post!");
+        return res.redirect('back');
     }
 };
 

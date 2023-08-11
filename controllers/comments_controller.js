@@ -15,20 +15,21 @@ module.exports.create=async function(req,res){
                 post.comments.push(comment);
                 //whenever update is done then we need to save the final result.
                 post.save();
-
+                req.flash('success','Comment Created');
                 console.log("comment created");
                 return res.redirect('/');
             }
             catch(err){
-                console.log("Error in creating comment!");
+                req.flash('error',err);
+                return res.redirect('back');
             }
             
         }
-        
+        req.flash('error','Sign-in first');
         return res.redirect('back');
     }
     catch(err){
-        console.log("Error in commenting!");
+        req.flash('error',err);
         res.redirect('/');
     }
 }
@@ -45,18 +46,21 @@ module.exports.destroy=async function(req,res){
             try{
                 //It will pull the comment id from the comments array in post.
                 const post=Post.findByIdAndUpdate(postId,{$pull:{comments:req.params.id}})
+                req.flash('success','Comment deleted');
                 return res.redirect('back');
             }
             catch(err){
-                console.log('Error in deleting comment from comments array!')
+                req.flash('error',err);
                 return res.redirect('back');
             }
+            
         }else{
+            req.flash('error','Sign-in first');
             return res.redirect('back');
         }
     }
     catch(err){
-        console.log('Error in deleting the comment ');
+        req.flash('error',err);
         return res.redirect('back');
     }
 }

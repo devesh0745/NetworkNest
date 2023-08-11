@@ -8,13 +8,13 @@ module.exports.create=async function(req,res){
             user:req.user._id
         });
         
+        req.flash('success','Post Created');
         
-        console.log("Post created");
         return res.redirect('back');
     }
     catch(err){
-        console.log("Error in posting!");
-        return;
+        req.flash('error',err);
+        return res.redirect('back');
     }
 }
 
@@ -26,23 +26,25 @@ module.exports.destroy=async function(req,res){
         //For authentication(loged in user and user who posted this post are same or not)
         if(post.user.toString()==req.user.id){
             post.deleteOne();
-            console.log('post deleted')
+            req.flash('success','Post Deleted');
             try{
                 //All the comments which are associted with this post will be deleted.
-                Comment.deleteMany({post:req.params.id});
+                await Comment.deleteMany({post:req.params.id});
                 console.log('comment deleted');
                 return res.redirect('back');
                 }
             catch(err){
                 console.log('Error in deleting comments');
+                return res.redirect('back');
             }
         }else{
-            alert('please login first');
+            req.flash('error','Sign-in First');
             return res.redirect('back');
             
         }
     }
-    catch(err){
-        console.log('error in deleting post');
+    catch(err){ 
+        req.flash('error',err);
+        return res.redirect('back');
     }
 }
