@@ -1,6 +1,8 @@
 <link rel="stylesheet" href="/css/user_profile.css">
-<h1>Hello</h1>
+
 <h3>Profile page</h3>
+
+<img src="<%=user.avatar%>" alt="<%=user.name%>" width="100">
 
 <!--not using locals because will display only when user is loged in-->
 <%if (user.id==profile_user.id) {%>

@@ -1,5 +1,6 @@
 const User=require('../models/user');
-
+const fs=require('fs');
+const path=require('path');
 
 //Render sign-in page
 module.exports.signIn=function(req,res){
@@ -73,26 +74,12 @@ module.exports.profile=async function(req,res){
 
 //To update a user.
 module.exports.update=async function(req,res){
- /*   if(req.user.id==req.params.id){
-    try{
-            const user=await User.findByIdAndUpdate(req.params.id,{name:req.body.name,email:req.body.email})
-            req.flash('success','Updated Successfuly');
-            return res.redirect('back')
-        }
-    catch(err){
-        req.flash('error',err);
-        return res.redirect('back');
-    }
-}else{
-    req.flash('error','unauthorized');
-    return res.status(401).send('Unauthorized');
-  }
-}*/
+ 
 if(req.user.id==req.params.id){
     try{
             
            let user=await User.findById(req.params.id);
-           //not using params because multer uses multipart
+           //not using params because multer uses multipart and using uploadedAvatar because it will be able to read the request from multipart.
            User.uploadedAvatar(req,res,function(err){
            if(err){console.log("****multer error",err)}
 
@@ -101,6 +88,12 @@ if(req.user.id==req.params.id){
             user.email=req.body.email;
 
             if(req.file){
+
+                if(user.avatar){
+                    //So it will go to the avatar path and delete from there
+                    fs.unlinkSync(path.join(__dirname,'..',user.avatar));
+                }
+
                 //this is saving the path of the uploaded file into the avatar field into the user.
                 user.avatar=User.avatarPath + '/' + req.file.filename;
                 console.log('user',user);
