@@ -19,6 +19,7 @@ router.use('/posts',require('./posts'));
 
 router.use('/comments',require('./comments'));
 
+router.use('/api',require('./api'));
 
 //So this router can be access to main index file.
 module.exports=router;
