@@ -6,7 +6,9 @@ const ExtractJWT=require('passport-jwt').ExtractJwt
 const User=require('../models/user');
 
 let opts={
-    jwtFromRequest:ExtractJWT.fromAuthHeaderAsBearerToken,
+    //it will extract jwt token from header.
+    jwtFromRequest:ExtractJWT.fromAuthHeaderAsBearerToken(),
+    //Used to decrypt the token.
     secretOrKey : 'AllSocial'
 }
 

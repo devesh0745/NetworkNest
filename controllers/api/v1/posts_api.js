@@ -19,9 +19,11 @@ module.exports.index=async function(req,res){
 }
 
 module.exports.destroy=async function(req,res){
-    const post=await Post.findById(req.params.id);
+    
     try{
-        //if(post.user.toString()==req.user.id){
+        let post=await Post.findById(req.params.id);
+
+        if(post.user.toString()==req.user.id){
             post.deleteOne();
          //   req.flash('success','Post Deleted');
             try{
@@ -34,13 +36,14 @@ module.exports.destroy=async function(req,res){
                 }
             catch(err){
                // console.log('Error in deleting comments');
-                return res.redirect('back');
+                return res.json(401,{
+                    message:'Error in deleting this Post'                })
             }
-       /* }else{
+        }else{
             req.flash('error','Sign-in First');
             return res.redirect('back');
             
-        }*/
+        }
     }
     catch(err){ 
         return res.json(500,{
