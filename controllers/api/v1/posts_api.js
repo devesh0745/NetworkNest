@@ -2,6 +2,7 @@ const Post=require('../../../models/post');
 const Comment=require('../../../models/comments');
 
 module.exports.index=async function(req,res){
+    
     const postList=await Post.find({})
                         .sort('-createdAt')
                         .populate('user')
@@ -19,8 +20,9 @@ module.exports.index=async function(req,res){
 }
 
 module.exports.destroy=async function(req,res){
-    
+    console.log('user',req.user);
     try{
+        //Autherization
         let post=await Post.findById(req.params.id);
 
         if(post.user.toString()==req.user.id){
@@ -40,14 +42,17 @@ module.exports.destroy=async function(req,res){
                     message:'Error in deleting this Post'                })
             }
         }else{
-            req.flash('error','Sign-in First');
-            return res.redirect('back');
+            return res.json(401,{
+            message:"Please sign-in first" 
+           })
             
         }
     }
     catch(err){ 
+        console.log(err);
         return res.json(500,{
             message:"Internal Sever Error!"
         });
+        
     }
 }

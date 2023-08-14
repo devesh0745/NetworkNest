@@ -14,11 +14,13 @@ router.get('/sign-up',userController.signUp);
 
 router.post('/create',userController.create);
 
-router.post('/create-session',passport.authenticate(
-    'local',
-    {failureRedirect:'/users/sign-in'},
-),userController.createSession);
+router.post('/create-session',passport.authenticate('local', {failureRedirect:'/users/sign-in'},),userController.createSession);
 
 router.get('/sign-out',userController.destroySession);
+
+//we send it to google
+router.get('/auth/google',passport.authenticate('google', {scope:['profile','email']}));
+//This is a callback url
+router.get('/auth/google/callback',passport.authenticate('google',{failureRedirect:'/users/sign-in'}),userController.createSession);
 
 module.exports=router
