@@ -18,7 +18,7 @@ passport.use(new googleStrategy({
         //find the user
         const user=await User.findOne({email:profile.emails[0].value}).exec();
         if(user){
-            console.log("********google auth user:",user);
+        //    console.log("********google auth user:",user);
             console.log('profile',profile);
             //if found, set this user as req.user(means sign-in)
             return done(null,user);
