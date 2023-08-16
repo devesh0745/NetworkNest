@@ -12,6 +12,7 @@ let transporter=nodemailer.createTransport({
     host:'smtp.gmail.com',
     port:587,
     secure:false,
+    //auth is an authentication object in transporter.
     auth:{
         user:'sdevesh227@gmail.com',
         pass:'mekkybjjnmqtjuyg'
@@ -28,9 +29,14 @@ let renderTemplate=(data,relativePath)=>{
         data,
         //template is basically what is composed of this((__dirname,'../views/mailers',relativePath)).
         function(err,template){
-            if(err){console.log('error in rendering template',err); return}
+            if(err)
+            {
+                console.log('error in rendering template',err);
+                return
+            }
 
-            mailHTML:template
+            mailHTML=template;
+            
         }
     )  
     return mailHTML;

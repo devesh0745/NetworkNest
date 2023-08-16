@@ -5,14 +5,16 @@ const nodeMailer=require('../config/nodemailer');
 //whenever any new comment is made we need to call this. 
                     //it takes comment as an argument.
 exports.newComment=async function(comment){
-    console.log("inside newComment nodemailer ");
     try{
+    let htmlString=nodeMailer.renderTemplate({comment:comment},'/comments/comments_mailers.ejs');    
     const info=await nodeMailer.transporter.sendMail({
         from:'sdevesh227@gmail.com',
         to:comment.user.email,
-        subject:"<h1>New comment is now published</h1>"
-        //info carries the info about the req that has been send.
+        subject:"New comment is published",
+        html:htmlString
+        
     });
+    //info carries the info about the req that has been send.
     if(info){
         console.log('message sent',info);
         return;
