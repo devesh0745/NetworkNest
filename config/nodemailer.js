@@ -2,15 +2,19 @@ const nodemailer=require('nodemailer');
 const ejs=require('ejs');
 const path=require('path');
 
+console.log('nodemailer running');
+
+
 //transport defines the config using which will be sending emails.
 let transporter=nodemailer.createTransport({
+    
     service:'gmail',
     host:'smtp.gmail.com',
     port:587,
     secure:false,
     auth:{
         user:'sdevesh227@gmail.com',
-        pass:''
+        pass:'mekkybjjnmqtjuyg'
     }
 });
 
