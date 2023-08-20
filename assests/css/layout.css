@@ -19,4 +19,9 @@
 #layout-main{
     height: 100%;
 }
+.fabutton {
+    background: none;
+    padding: 0px;
+    border: none;
+  }
 

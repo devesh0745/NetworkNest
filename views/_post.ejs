@@ -1,3 +1,5 @@
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
                 <li id="post-<%=post._id%>">
                     <% if(locals.user && locals.user.id==post.user.id) {%>
                         <small>
@@ -6,9 +8,18 @@
                     <%}%>
                     <%=post.content%>
                     <%=post.user.name%>
+                    <br>
+                    <form action="/likes/create-post-like" method="post">
+                        <input type="hidden" name="post" value="<%= post._id %>">
+                        <button type="submit" class="fabutton">
+                            <i class="fa-regular fa-thumbs-up"></i>
+                        </button>
+                        <span><%=post.likes.length%> likes</span>
+                    </form>
+                    <br>
                     <div class="post-comment">
                         <%if(locals.user) {%>
-                            <form action="/comments/create" method="post">
+                            <form  action="/comments/create" method="post">
                                 <input type="text" name="content" id="" placeholder="Add Comment" required>
                                 <!--value will pass the post id which will be used in action when form is submitted-->
                                 <input type="hidden" name="post" value="<%= post._id %>">

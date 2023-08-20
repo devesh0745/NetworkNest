@@ -16,7 +16,7 @@ exports.newComment=async function(comment){
     });
     //info carries the info about the req that has been send.
     if(info){
-        console.log('message sent',info);
+        console.log('message sent');
         return;
     }else{
         console.log('Error in sending mail',err)

@@ -1,5 +1,6 @@
 const Post=require('../models/post');
 const Comment=require('../models/comments');
+const Like=require('../models/like');
 
 module.exports.create=async function(req,res){
     try{
@@ -34,6 +35,12 @@ module.exports.destroy=async function(req,res){
         //.id will convert the id of the user into string
         //For authentication(loged in user and user who posted this post are same or not)
         if(post.user.toString()==req.user.id){
+            for(let likeId of post.likes){
+                //will delete the likes from the like schema also.
+                console.log('like id:',likeId);
+               const like=await Like.findByIdAndDelete(likeId)
+            }
+            console.log("like deleted");
             post.deleteOne();
             req.flash('success','Post Deleted');
             try{

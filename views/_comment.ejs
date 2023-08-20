@@ -10,5 +10,12 @@
         <small>
             <%=comment.user.name%>
         </small>
+        <form action="/likes/create-comment-like" method="post">
+            <input type="hidden" name="comment" value="<%= comment._id %>">
+            <button type="submit" class="fabutton">
+                <i class="fa-regular fa-thumbs-up"></i>
+            </button>
+            <span><%=comment.likes.length%> likes</span>
+        </form>
     </p>
 </li>
