@@ -1,0 +1,15 @@
+.all-users-friends{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 25vw;
+    height: auto;
+    border-left: 0.5px solid lightgray;
+    border-bottom: 0.5px solid lightgray;
+    align-items: center;
+}
+
+.all-users-friends > ul{
+    list-style-type: none;
+    
+}

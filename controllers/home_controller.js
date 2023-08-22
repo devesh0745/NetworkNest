@@ -1,5 +1,6 @@
 const Post=require('../models/post');
 const User=require('../models/user');
+const Friendship=require('../models/friendships');
 
 module.exports.home= async function(req,res){
     try{
@@ -13,18 +14,29 @@ module.exports.home= async function(req,res){
                         path:'comments',
                         populate:{
                         path:'user'
-                        }
-                             }).exec();
+                        }}).exec();
+        if(req.user){
+            const userSendingReq=await User.findById({_id:req.user._id}).populate('friendships').exec();
+            console.log("**********:",req.user)
+            //now to req.user will have the populated friendships
+            req.user=userSendingReq;
+        }
         //To get all the users
         const users=await User.find({});
+       // console.log('user:',req.user);
         return res.render('home',{
             title:'AllSocial',
             postList:postList,
-            all_users:users
+            all_users:users,
+            sendReq:req.user
+            
+          
         });
-    }
+    
+}
+
     catch(err){
-        console.log("Error in displaying post!");
+        console.log("Error in displaying post!",err);
         return res.redirect('back');
     }
 };

@@ -12,9 +12,19 @@
         <input type="file" name="avatar" id="" placeholder="Profile Picture">
         <input type="Submit" name="" id="" value="Update">
     </form>
+   
 
 <%}else {%>
     <p><%= profile_user.name%></p>
     <p><%= profile_user.email%></p>
-
+    <form action="/friend/create-friend" method="post">
+        <input type="hidden" name="userId" id="" value="<%=profile_user._id%>">
+        <button id="btn" type="submit"><%if(locals.user.friendships.includes(profile_user._id)) {%>
+            Remove Friend
+            <%}else {%>
+            
+                Add Friend
+                <%}%>
+        </button>
+    </form>
 <%}%> 

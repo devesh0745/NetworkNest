@@ -24,7 +24,13 @@ const userSchema=new mongoose.Schema({
     },
     avatar:{
         type:String
-    }
+    },
+    friendships:[
+        {
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'User'
+        }
+    ]
     
 },{
     //It will tell(updated at and created at) every time some action is perform.

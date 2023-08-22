@@ -6,6 +6,7 @@ module.exports.createLikePost=async function(req,res){
     try{
         if(req.user){
             const post=await Post.findById(req.body.post);
+            console.log('post:',post);
             //All the post user has liked.
             const likeUser=await Like.find({user:req.user._id});
             //check if user has liked a post or not.

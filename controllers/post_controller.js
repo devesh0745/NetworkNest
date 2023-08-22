@@ -36,7 +36,7 @@ module.exports.destroy=async function(req,res){
         //For authentication(loged in user and user who posted this post are same or not)
         if(post.user.toString()==req.user.id){
             for(let likeId of post.likes){
-                //will delete the likes from the like schema also.
+                //will delete the likes from the like schema also when post is deleted.
                 console.log('like id:',likeId);
                const like=await Like.findByIdAndDelete(likeId)
             }

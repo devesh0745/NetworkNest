@@ -23,5 +23,7 @@ router.use('/api',require('./api'));
 
 router.use('/likes',require('./likes'));
 
+router.use('/friend',require('./friends'));
+
 //So this router can be access to main index file.
 module.exports=router;
