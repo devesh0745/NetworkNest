@@ -17,7 +17,6 @@ module.exports.home= async function(req,res){
                         }}).exec();
         if(req.user){
             const userSendingReq=await User.findById({_id:req.user._id}).populate('friendships').exec();
-            console.log("**********:",req.user)
             //now to req.user will have the populated friendships
             req.user=userSendingReq;
         }
