@@ -1,22 +1,44 @@
 <link rel="stylesheet" href="/css/home.css">
-<link rel="stylesheet" href="/css/chat_box.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
 
-<h1>AllSocial</h1>
-
-<section>
+<section id="user-section-0">
     <%if(locals.user) {%>
-    <form action="/posts/create" id="new-post-form" method="post">
-        <h4>POST</h4>
-        <textarea name="content"  cols="30" rows="4" placeholder="type here..." required></textarea>
-        <input type="submit" value="submit">
+        <div id="home-friends" id="users-friends">
+            <div id="home-friends-all" class="all-users-friends">
+                <h2 id="home-heading-fiends">Friends</h2>
+                    <!--sendReq has friendships populated in it-->
+                    <%for (allFriends of sendReq.friendships) {%>
+                    <ul id="home-list">       
+                        <li>
+                            <div id="rem-friend">
+                            <a id="home-friendsName" href="/users/profile/<%=allFriends.id %>"><%= allFriends.name%></a>
+                            <!--it will go to the friends controller to delete the friend-->
+                            <form id="home-form" action="/friend/create-friend" method="post">
+                                <input type="hidden" name="userId" value="<%=allFriends._id%>">
+                                <button id="home-btn" type="submit" class="fabutton">
+                                    <i class="fa-regular fa-circle-xmark"></i>
+                                </button>
+                            </form>
+                            </div>
+                        </li>
+                    </ul>
+                    <%}%>
+                </div>
+            <%}%>
+</section>
+<section id="home-section-1">
+    <%if(locals.user) {%>
+    <form id="home-form" action="/posts/create" id="new-post-form" method="post">
+        <h4 id="home-heading-post">POST</h4>
+        <textarea id="home-textarea" name="content"  cols="30" rows="4" placeholder="type here..." required></textarea>
+        <input id="home-submit" type="submit" value="submit">
     </form>
     <%}%>
 
-    <div id="post-list-container">
-        <h3>All Post</h3>
-        <ul>
+    <div id="home-post">
+        <h3 id="home-post-head">All Post</h3>
+        <ul id="home-list">
             <%for (post of postList) {%>
                 <%- include('_post') -%>
             <%}%>
@@ -26,32 +48,12 @@
 </section>
 
 <!--To display all the friends on home screen-->
-<section>
-    <%if(locals.user) {%>
-    <div id="users-friends">
-        <div class="all-users-friends">
-            <h2>Friends</h2>
-                <!--sendReq has friendships populated in it-->
-                <%for (allFriends of sendReq.friendships) {%>
-                <ul>       
-                    <li>
-                        <a href="/users/profile/<%=allFriends.id %>"><%= allFriends.name%></a>
-                        <!--it will go to the friends controller to delete the friend-->
-                        <form action="/friend/create-friend" method="post">
-                            <input type="hidden" name="userId" value="<%=allFriends._id%>">
-                            <button type="submit" class="fabutton">
-                                <i class="fa-regular fa-circle-xmark"></i>
-                            </button>
-                        </form>
-                    </li>
-                </ul>
-                <%}%>
-            </div>
-        <%}%>
-    <div class="all-users-friends">
-        <h2>All Users</h2>
+<section id="home-section-2">
+    
+    <div id="home-all-users" class="all-users-friends">
+        <h2 id="home-heading-allUsers">All Users</h2>
             <% for (u of all_users) {%>
-                <ul>        
+                <ul id="home-list">        
                     <li>
                         <a href="/users/profile/<%= u.id %>"><%= u.name%></a>
                     </li>
@@ -62,15 +64,7 @@
     </div>
     
 </section>
-<section>
-<%- include('_chat_box') -%>
-</section>
 <script src="/js/home_posts.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.2/socket.io.js"></script>
-<script src="/js/chat_engine.js"></script>
 
 <%if(locals.user) {%>
-<script>
-    new ChatEngine('user-chat-box','<%=locals.user.email%>')
-</script>
 <%}%>

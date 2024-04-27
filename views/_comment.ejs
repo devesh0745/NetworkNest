@@ -1,15 +1,19 @@
+<link rel="stylesheet" href="/css/_comment.css">
+
 <li>
     <p>
+        <%=comment.content%>
         <% if(locals.user && locals.user.id==comment.user.id) {%>
             <small>
-                <a href="/comments/destroy/<%=comment._id%>">del</a>
+                <a href="/comments/destroy/<%=comment._id%>"><mark>X</mark></a>
             </small>
+            
         <%}%>
-        <%=comment.content%>
         <br>
-        <small>
+        <small id="comment-name">
             <%=comment.user.name%>
         </small>
+      
         <form action="/likes/create-comment-like" method="post">
             <input type="hidden" name="comment" value="<%= comment._id %>">
             <button type="submit" class="fabutton">

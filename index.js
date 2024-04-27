@@ -6,6 +6,7 @@ const expressLayouts=require('express-ejs-layouts');
 const db=require('./config/mongoose');
 //used for session cookie
 const session=require('express-session');
+//user for authentication
 const passport=require('passport');
 const passportGoogle=require('./config/passport-google-oauth2-strategy');
 const passportJWT=require('./config/passport-jwt-strategy');
@@ -16,10 +17,10 @@ const flash=require('connect-flash');
 const customMware=require('./config/middleware');
 
 //setup the chat server to be used with socket.io
-const chatServer=require('http').Server(app);
-const chatSockets=require('./config/chat_sockets').chatSockets(chatServer);
-chatServer.listen(5000);
-console.log("Chat server is listening on post 5000");
+//const chatServer=require('http').Server(app);
+//const chatSockets=require('./config/chat_sockets').chatSockets(chatServer);
+//chatServer.listen(5000);
+//console.log("Chat server is listening on post 5000");
 
 /*app.use(sassMiddleware({
     src:'/assests/scss',

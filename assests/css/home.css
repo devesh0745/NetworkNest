@@ -1,15 +1,116 @@
-.all-users-friends{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 25vw;
-    height: auto;
-    border-left: 0.5px solid lightgray;
-    border-bottom: 0.5px solid lightgray;
-    align-items: center;
+/* General styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f8f9fa; /* Light gray color */
 }
 
-.all-users-friends > ul{
-    list-style-type: none;
-    
+/* Section 0 (Friends) */
+#user-section-0 {
+  padding: 20px;
+  margin-bottom: 20px;
+  margin-left: 5%;
+  height: 400px;
+  margin-top: 2%;
+}
+
+#home-heading-fiends {
+  margin-bottom: 10px;
+  color: #007bff; /* Blue color */
+}
+
+#home-friendsName {
+  color: #333; /* Dark color for friend names */
+  text-decoration: none;
+}
+
+#home-friendsName:hover {
+  text-decoration: underline;
+}
+
+#home-btn {
+  padding: 5px;
+  background-color: #ff6347; /* Red color */
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#home-btn:hover {
+  background-color: #ff3b20; /* Darker red color on hover */
+}
+
+/* Section 1 (Posts) */
+#home-section-1 {
+  padding: 20px;
+  margin-bottom: 20px;
+  margin-top: 2%;
+  border: 1px solid rgb(97, 162, 232);
+  width: 600px;
+  border-radius: 10px;
+}
+
+#home-heading-post {
+  margin-bottom: 10px;
+  color: #007bff; /* Blue color */
+}
+
+#home-textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+#home-submit {
+  padding: 10px 20px;
+  background-color: #007bff; /* Blue color */
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#home-submit:hover {
+  background-color: #0056b3; /* Darker blue color on hover */
+}
+
+/* Section 2 (All Users) */
+#home-section-2 {
+  padding: 20px;
+  margin-top: 2%;
+  height: 400px;
+  border: 1px solid rgb(97, 162, 232);
+ margin-right: 2%;
+ border-radius: 10px;
+}
+
+#home-heading-allUsers {
+  margin-bottom: 10px;
+  color: #007bff; /* Blue color */
+}
+
+#home-list {
+  list-style: none;
+  padding: 0;
+}
+
+#home-list li {
+  margin-bottom: 10px;
+}
+
+#home-list a {
+  color: #333; /* Dark color for user names */
+  text-decoration: none;
+}
+
+#home-list a:hover {
+  text-decoration: underline;
+}
+#rem-friend{
+  display: flex;
+  justify-content: space-between;
 }

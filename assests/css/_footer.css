@@ -1,5 +1,30 @@
-#pages{
-    display: flex;
-    flex-direction: row;
-    
-}
+/* Styles for the footer */
+footer {
+    background-color: #f8f9fa; /* Light background color */
+    padding: 20px 0; /* Add some padding */
+  }
+  
+  .navbar {
+    padding: 0; /* Remove default padding from the navbar */
+  }
+  
+  #pages {
+    display: flex; /* Use flexbox for layout */
+    justify-content: center; /* Center the links horizontally */
+  }
+  
+  .container-fluid {
+    margin: 0 10px; /* Add some spacing between links */
+  }
+  
+  .container-fluid a {
+    color: #333; /* Link color */
+    text-decoration: none; /* Remove underline */
+    padding: 5px 10px; /* Add some padding to links */
+  }
+  
+  .container-fluid a:hover {
+    background-color: #e9ecef; /* Light background color on hover */
+    border-radius: 5px; /* Add rounded corners on hover */
+  }
+  

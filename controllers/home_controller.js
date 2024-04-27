@@ -15,6 +15,7 @@ module.exports.home= async function(req,res){
                         populate:{
                         path:'user'
                         }}).exec();
+        //console.log("*********post******:",postList);
         if(req.user){
             const userSendingReq=await User.findById({_id:req.user._id}).populate('friendships').exec();
             //now to req.user will have the populated friendships

@@ -1,13 +1,58 @@
-.container-fliud{
-    display: flex;
-    flex-direction: row;
-}
-#ul{
-    list-style-type: none;
-    display: flex;
-    flex-direction: row;
+/* Custom styling for the header */
 
+/* Resetting default margin and padding */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-.nav-list{
-    padding-right: 15px;
+
+/* Header styles */
+header {
+  background-color: #c0c8cf; /* Light background color */
+  padding: 10px 0; /* Padding */
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px; /* Add padding */
+}
+
+#pages {
+  display: flex;
+}
+
+.container-fluid {
+  margin-right: 10px; /* Spacing between links */
+}
+
+.container-fluid a {
+  color: #333; /* Link color */
+  text-decoration: none; /* Remove underline */
+  margin-right: 15px; /* Spacing between links */
+}
+
+/* Styling for font-awesome icon */
+.fa-user {
+  font-size: 20px; /* Icon size */
+  margin-right: 5px; /* Spacing between icon and text */
+}
+
+/* Styling for user name */
+.nav-list {
+  margin-right: 15px; /* Spacing between user name and sign out link */
+}
+
+/* Styling for sign-out link */
+.nav-list a {
+  color: #333; /* Link color */
+  text-decoration: none; /* Remove underline */
+}
+
+/* Styling for hover effect on links */
+.container-fluid a:hover,
+.nav-list a:hover {
+  text-decoration: underline; /* Underline on hover */
 }

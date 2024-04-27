@@ -24,7 +24,7 @@ module.exports.destroy=async function(req,res){
     try{
         //Autherization
         let post=await Post.findById(req.params.id);
-
+      //  console.log('post',post);
         if(post.user.toString()==req.user.id){
             post.deleteOne();
          //   req.flash('success','Post Deleted');

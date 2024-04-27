@@ -1,25 +1,25 @@
 <link rel="stylesheet" href="/css/user_profile.css">
 
-<h3>Profile page</h3>
+<h3 id="profile-heading">Profile page</h3>
 
-<img src="<%=user.avatar%>" alt="<%=user.name%>" width="100">
+<img id="profile-img" src="<%=user.avatar%>" alt="<%=user.name%>" width="100">
 
 <!--not using locals because will display only when user is loged in-->
 <%if (user.id==profile_user.id) {%>
-    <form action="/users/update/<%=profile_user.id%>" method="post" enctype="multipart/form-data">
-        <input type="text" name="name" id="" placeholder="Your Name" value="<%=profile_user.name%>" required>
-        <input type="text" name="email" id="" placeholder="Your Email" value="<%=profile_user.email%>" required>
-        <input type="file" name="avatar" id="" placeholder="Profile Picture">
-        <input type="Submit" name="" id="" value="Update">
+    <form id="profile-form" action="/users/update/<%=profile_user.id%>" method="post" enctype="multipart/form-data">
+        <input id="profile-name" type="text" name="name" id="" placeholder="Your Name" value="<%=profile_user.name%>" required>
+        <input id="profile-email" type="text" name="email" id="" placeholder="Your Email" value="<%=profile_user.email%>" required>
+        <input id="profile-pic" type="file" name="avatar" id="" placeholder="Profile Picture">
+        <input id="profile-update" type="Submit" name="" id="" value="Update">
     </form>
    
 
 <%}else {%>
-    <p><%= profile_user.name%></p>
-    <p><%= profile_user.email%></p>
-    <form action="/friend/create-friend" method="post">
+    <p id="profile-user-name"><%= profile_user.name%></p>
+    <p id="profile-user-email"><%= profile_user.email%></p>
+    <form id="profile-post" action="/friend/create-friend" method="post">
         <input type="hidden" name="userId" id="" value="<%=profile_user._id%>">
-        <button id="btn" type="submit"><%if(locals.user.friendships.includes(profile_user._id)) {%>
+        <button id="profile-btn" id="btn" type="submit"><%if(locals.user.friendships.includes(profile_user._id)) {%>
             Remove Friend
             <%}else {%>
             

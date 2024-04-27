@@ -1,33 +1,39 @@
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+                <link rel="stylesheet" href="/css/_post.css">
+                <link rel="stylesheet" href="/css/_comment.css">
+
 
                 <li id="post-<%=post._id%>">
                     <% if(locals.user && locals.user.id==post.user.id) {%>
-                        <small>
-                            <a class="delete-post-button" href="/posts/destroy/<%=post._id%>">del</a>
+                        <small id="post-small">
+                            <a id="post-small-a" class="delete-post-button" href="/posts/destroy/<%=post._id%>">X</a>
                         </small>
                     <%}%>
-                    <%=post.content%>
-                    <%=post.user.name%>
+                    <p id="post-content"><%=post.content%></p>
+                    <p id="post-name"><%=post.user.name%></p>
                     <br>
-                    <form action="/likes/create-post-like" method="post">
-                        <input type="hidden" name="post" value="<%= post._id %>">
-                        <button type="submit" class="fabutton">
-                            <i class="fa-regular fa-thumbs-up"></i>
-                        </button>
-                        <span><%=post.likes.length%> likes</span>
+                    <form id="post-form" action="/likes/create-post-like" method="post">
+                            <input type="hidden" name="post" value="<%= post._id %>">
+                            <button id="post-btn" type="submit" class="fabutton">
+                                <i class="fa-regular fa-thumbs-up"></i>
+                            </button>
+                        
+                        <span id="post-likes"><%=post.likes.length%> likes</span>
                     </form>
                     <br>
-                    <div class="post-comment">
+                    <div id="post-comment-section" class="post-comment">
                         <%if(locals.user) {%>
-                            <form  action="/comments/create" method="post">
-                                <input type="text" name="content" id="" placeholder="Add Comment" required>
+                            <form id="post-form" action="/comments/create" method="post">
+                                <div id="input-submit">
+                                <input id="post-add-comment" type="text" name="content" id="" placeholder="Add Comment" required>
                                 <!--value will pass the post id which will be used in action when form is submitted-->
                                 <input type="hidden" name="post" value="<%= post._id %>">
-                                <input type="submit" name="" id="">
+                                <input id="post-comment-submit" type="submit" name="" id="">
+                            </div>
                             </form>
                         <%}%>
-                        <div class="post-comment-list">
-                            <ul id="post-comment-<%=post._id%>">
+                        <div  id="post-all-comments" class="post-comment-list">
+                            <ul id="post-comment-list" id="post-comment-<%=post._id%>">
                                 <%for(comment of post.comments) {%>
                                     <%-include('_comment')-%>
                                 <%}%>    

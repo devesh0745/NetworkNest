@@ -1,0 +1,54 @@
+/* Styles for individual comment */
+.comment-item {
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+  }
+  
+  .comment-content {
+    margin-bottom: 5px;
+  }
+  
+  .comment-author {
+    font-weight: bold;
+  }
+  
+  /* Styles for the delete comment button */
+  .delete-comment-button {
+    color: #dc3545; /* Red color */
+    text-decoration: none;
+    margin-right: 10px;
+  }
+  
+  .delete-comment-button:hover {
+    text-decoration: underline;
+  }
+  
+  /* Styles for the like button */
+  .like-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+  
+  .like-button:hover {
+    text-decoration: underline;
+  }
+  
+  /* Styles for the number of likes */
+  .like-count {
+    margin-left: 5px;
+  }
+  
+  /* Responsive styles */
+  @media (max-width: 768px) {
+    .comment-item {
+      padding: 8px;
+    }
+  }
+#comment-name{
+  font-weight: bold;
+  margin-left: 90%;
+}  

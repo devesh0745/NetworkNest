@@ -82,7 +82,7 @@ if(req.user.id==req.params.id){
            //not using params because multer uses multipart and using uploadedAvatar because it will be able to read the request from multipart.
            User.uploadedAvatar(req,res,function(err){
            if(err){console.log("****multer error",err)}
-
+            
            //it will update the name and email.
             user.name=req.body.name;
             user.email=req.body.email;

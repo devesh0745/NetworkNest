@@ -1,0 +1,83 @@
+/* Basic post styling */
+#post-content {
+  margin-bottom: 10px;
+}
+
+#post-name {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+/* Like button styling */
+#post-form {
+  display: inline-block;
+}
+
+#post-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2em;
+  margin-right: 5px;
+}
+
+#post-likes {
+  font-size: 0.9em;
+  color: gray;
+}
+
+/* Comment section styling */
+#post-comment-section {
+  margin-top: 15px;
+  border-top: 1px solid #ddd;
+  padding-top: 10px;
+}
+
+#post-add-comment {
+  width: 80%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-right: 5px;
+}
+
+#post-comment-submit {
+  padding: 8px 15px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Individual comment styling */
+.post-comment {
+  margin-bottom: 10px;
+  padding: 5px;
+  border-bottom: 1px solid #ddd;
+}
+
+.post-comment-content {
+  margin-bottom: 5px;
+}
+
+.post-comment-name {
+  font-weight: bold;
+}
+
+/* Delete button styling */
+#post-small {
+  float: right;
+  margin-top: -10px;
+}
+
+#post-small-a {
+  color: red;
+  font-size: 1em;
+  cursor: pointer;
+}
+#input-submit{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2%;
+}
