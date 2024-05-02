@@ -8,7 +8,6 @@ const db=require('./config/mongoose');
 const session=require('express-session');
 //user for authentication
 const passport=require('passport');
-const passportGoogle=require('./config/passport-google-oauth2-strategy');
 const passportJWT=require('./config/passport-jwt-strategy');
 const passportLocal=require('./config/passport-local-strategy');
 const MongoStore=require('connect-mongo');
